@@ -1,0 +1,57 @@
+# Dependencies and generated build output
+node_modules/
+dist/
+dist-ssr/
+*.tsbuildinfo
+
+# Test reports and tool caches
+coverage/
+.nyc_output/
+playwright-report/
+test-results/
+.vite/
+.cache/
+.eslintcache
+.prettiercache
+.husky/_/
+
+# Logs and local temporary files
+*.log
+/tmp/
+/temp/
+*.swp
+*.swo
+*~
+
+# Environment values; commit only templates with placeholder values
+.env
+.env.*
+!.env.example
+!.env.*.example
+
+# OS files
+.DS_Store
+._*
+Thumbs.db
+Desktop.ini
+
+# Personal IDE state; allow team VS Code configuration
+.idea/
+.vscode/*
+!.vscode/extensions.json
+!.vscode/settings.json
+!.vscode/tasks.json
+!.vscode/launch.json
+!.vscode/*.code-snippets
+
+# Local AI state only; keep AGENTS.md and shared skills versioned
+/.agents/local/
+/.claude/settings.local.json
+/CLAUDE.local.md
+/.claude/worktrees/
+/.codex/auth.json
+/.codex/history.jsonl
+/.codex/sessions/
+/.codex/log/
+/.codex/tmp/
+/.worktrees/

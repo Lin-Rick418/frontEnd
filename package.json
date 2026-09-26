@@ -1,0 +1,51 @@
+{
+  "name": "vue-vite-app",
+  "version": "1.0.0",
+  "description": "Vue 3 application powered by Vite",
+  "scripts": {
+    "dev": "vite",
+    "build": "vite build",
+    "preview": "vite preview",
+    "lint": "eslint . --max-warnings 0",
+    "typecheck": "vue-tsc --noEmit -p tsconfig.json",
+    "format": "prettier . --write",
+    "format:check": "prettier . --check",
+    "lint:staged": "lint-staged",
+    "commitlint": "commitlint",
+    "prepare": "husky"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "vue": "3.5.43"
+  },
+  "devDependencies": {
+    "@commitlint/cli": "21.2.3",
+    "@commitlint/config-conventional": "21.2.3",
+    "@eslint/js": "10.0.1",
+    "@vitejs/plugin-vue": "6.0.9",
+    "eslint": "10.11.0",
+    "eslint-config-prettier": "10.1.8",
+    "eslint-plugin-vue": "10.11.1",
+    "globals": "17.12.0",
+    "husky": "9.1.7",
+    "lint-staged": "16.4.0",
+    "prettier": "3.9.9",
+    "typescript": "5.9.3",
+    "vite": "8.3.1",
+    "vue-tsc": "3.3.11"
+  },
+  "private": true,
+  "lint-staged": {
+    "*.{js,mjs,cjs,vue}": [
+      "eslint --max-warnings 0",
+      "prettier --write"
+    ],
+    "*.{json,jsonc,css,scss,less,html,md,mdx,yaml,yml}": "prettier --write"
+  },
+  "type": "module",
+  "engines": {
+    "node": ">=22.15.0"
+  }
+}
