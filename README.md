@@ -130,6 +130,14 @@ echo 'feat(auth): 新增登入功能' | npm run commitlint
 
 ## 團隊協作與 Git 忽略規則
 
+### PR 與 code review
+
+PR 使用 [.github/pull_request_template.md](.github/pull_request_template.md)，統一記錄修改目的、影響範圍、驗證結果與 AI review 處理摘要。完整流程、意見分類、merge 條件與可直接使用的 AI review 指令見 [docs/code-review.md](docs/code-review.md)。
+
+作者先自查與驗證，再運用 AI 輔助檢查程式碼一致性、例外處理及測試缺口，最後交由非作者的人工 reviewer 核准。這是團隊流程約定；目前尚未配置 CI 或由本次文件變更設定平台 merge 限制。
+
+### Git 忽略規則
+
 `.gitignore` 排除 dependencies、build 產物、測試報告、cache、log、本機環境變數、IDE 個人狀態及 AI 本機執行紀錄。
 
 - `package-lock.json`、`.husky/` 的自訂 hooks、工具設定與共用 AI 規範需納入 Git；Husky 自動產生的 `.husky/_/` 忽略。
