@@ -1,10 +1,21 @@
 <script setup lang="ts">
-import { onMounted } from 'vue'
+import { computed, onMounted, ref } from 'vue'
 import { storeToRefs } from 'pinia'
 import { useUsersStore } from './stores/users'
 
 const usersStore = useUsersStore()
 const { users } = storeToRefs(usersStore)
+const searchQuery = ref('')
+const filteredUsers = computed(() => {
+  const query = searchQuery.value.trim().toLowerCase()
+  if (!query) return users.value
+
+  return users.value.filter(
+    (user) =>
+      user.name.toLowerCase().includes(query) &&
+      user.email.toLowerCase().includes(query),
+  )
+})
 
 onMounted(async () => {
   await usersStore.fetchUsers()
@@ -28,13 +39,27 @@ onMounted(async () => {
       </button>
     </header>
 
+    <div class="search-field">
+      <label for="user-search">搜尋使用者</label>
+      <input
+        id="user-search"
+        v-model="searchQuery"
+        type="search"
+        placeholder="輸入姓名或 email"
+      />
+    </div>
+
     <p class="status" role="status">
-      {{ users.length ? `已載入 ${users.length} 位使用者。` : '' }}
+      {{
+        users.length
+          ? `顯示 ${filteredUsers.length} / ${users.length} 位使用者。`
+          : ''
+      }}
     </p>
 
     <section aria-label="使用者列表">
-      <ul v-if="users.length" class="user-grid">
-        <li v-for="user in users" :key="user.id" class="user-card">
+      <ul v-if="filteredUsers.length" class="user-grid">
+        <li v-for="user in filteredUsers" :key="user.id" class="user-card">
           <img
             :src="user.avatarUrl"
             alt=""
@@ -47,6 +72,9 @@ onMounted(async () => {
           <p class="email">{{ user.email }}</p>
         </li>
       </ul>
+      <p v-else-if="users.length" class="empty">
+        找不到符合的使用者，請調整或清除搜尋條件。
+      </p>
       <p v-else class="empty">尚無使用者資料，可按「換一批使用者」取得。</p>
     </section>
   </main>
