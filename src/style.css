@@ -55,14 +55,14 @@ button {
   border: 0;
   border-radius: 10px;
   color: white;
-  background: #256347;
+  background: #000;
   font: inherit;
   font-weight: 600;
   cursor: pointer;
 }
 
 button:hover {
-  background: #194d35;
+  background: #222;
 }
 
 :focus-visible {
